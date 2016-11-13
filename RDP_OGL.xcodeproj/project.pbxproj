@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		41787F851DD80E1500FB94B8 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41787F841DD80E1500FB94B8 /* main.cpp */; };
+		41787F851DD80E1500FB94B8 /* RDP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41787F841DD80E1500FB94B8 /* RDP.cpp */; };
+		41787F8D1DD80FA000FB94B8 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41787F8C1DD80FA000FB94B8 /* GLUT.framework */; };
+		41787F8F1DD80FB100FB94B8 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41787F8E1DD80FB100FB94B8 /* OpenGL.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +26,10 @@
 
 /* Begin PBXFileReference section */
 		41787F811DD80E1500FB94B8 /* RDP_OGL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RDP_OGL; sourceTree = BUILT_PRODUCTS_DIR; };
-		41787F841DD80E1500FB94B8 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		41787F841DD80E1500FB94B8 /* RDP.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RDP.cpp; sourceTree = "<group>"; usesTabs = 1; };
+		41787F8C1DD80FA000FB94B8 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		41787F8E1DD80FB100FB94B8 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		41787F901DD8102200FB94B8 /* rdp_ogl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rdp_ogl.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +37,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41787F8F1DD80FB100FB94B8 /* OpenGL.framework in Frameworks */,
+				41787F8D1DD80FA000FB94B8 /* GLUT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +50,7 @@
 			children = (
 				41787F831DD80E1500FB94B8 /* RDP_OGL */,
 				41787F821DD80E1500FB94B8 /* Products */,
+				41787F8B1DD80FA000FB94B8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,9 +65,19 @@
 		41787F831DD80E1500FB94B8 /* RDP_OGL */ = {
 			isa = PBXGroup;
 			children = (
-				41787F841DD80E1500FB94B8 /* main.cpp */,
+				41787F841DD80E1500FB94B8 /* RDP.cpp */,
+				41787F901DD8102200FB94B8 /* rdp_ogl.h */,
 			);
 			path = RDP_OGL;
+			sourceTree = "<group>";
+		};
+		41787F8B1DD80FA000FB94B8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				41787F8E1DD80FB100FB94B8 /* OpenGL.framework */,
+				41787F8C1DD80FA000FB94B8 /* GLUT.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -120,7 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41787F851DD80E1500FB94B8 /* main.cpp in Sources */,
+				41787F851DD80E1500FB94B8 /* RDP.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
