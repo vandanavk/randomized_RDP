@@ -21,7 +21,7 @@ using namespace std;
 #define glDeleteVertexArrays glDeleteVertexArraysAPPLE
 #endif
 
-#define PT_MAX 80
+#define PT_MAX 30
 
 vector<Point> point;
 vector<Point> backup;
@@ -45,9 +45,21 @@ void initialize()
 		point.push_back(Point(20+(rand()%(129)), 50+(rand()%(PT_MAX-1)), false));
 	}
 	sort(point.begin(), point.end(), [](const Point& lhs, const Point& rhs){ return lhs.x < rhs.x; });
+	for (i=0;i<PT_MAX;i++)
+		cout<<"("<<point[i].x<<","<<point[i].y<<") ";
 	backup=point;
-	sort(backup.begin(), backup.end(), [](const Point& lhs, const Point& rhs){ return lhs.y < rhs.y; });
+}
+
+void worst_case()
+{
+	int i = 0;
 	
+	srand(time(NULL));
+	for (i =0; i<PT_MAX; i++)
+	{
+		point.push_back(Point(20+(rand()%(129)), 50+(rand()%(80)), false));
+	}
+	sort(point.begin(), point.end(), [](const Point& lhs, const Point& rhs){ return lhs.x < rhs.x; });
 }
 
 void display()
@@ -86,9 +98,17 @@ void RDP(vector<Point>& p, int first, int last) {
 	
 	double dist =0, cmp = 0, dmax = 0;
 	int index = 0;
-	bool inside = false;
 	
 	glutDisplayFunc(display);
+	glColor3ub(0, 255, 0);
+	glBegin(GL_LINES);
+			glVertex2i(point[first].x,point[first].y);
+			glVertex2i(point[last].x,point[last].y);
+	
+	glEnd();
+	glFlush();
+	glutSwapBuffers();
+	glutPostRedisplay();
 	//cout <<"first="<<p[first].x<<","<<p[first].y<<"\n";
 	//cout <<"last="<<p[last].x<<","<<p[last].y<<"\n";
 	for (int j = first+1; j<last;j++)
@@ -101,19 +121,17 @@ void RDP(vector<Point>& p, int first, int last) {
 			index = j;
 			dmax = cmp;
 		}
-		inside = true;
 	}
 
 	if (dmax > epsilon) {
-		//cout <<"greater: "<<p[index].x<<","<<p[index].y<<"\n";
+		cout <<"greater: "<<p[index].x<<","<<p[index].y<<"\n";
 		RDP(p,first, index);
 		RDP(p,index, last);
 	}
 	if (!p[index].getVisited() && dmax < epsilon){
-		//cout <<"lesser: "<<p[index].x<<","<<p[index].y<<"\n";
+		cout <<"lesser: "<<p[index].x<<","<<p[index].y<<"\n";
 		p.erase(p.begin()+index);
 	}
-
 }
 
 void keyboard (unsigned char key, int x, int y)
@@ -121,6 +139,7 @@ void keyboard (unsigned char key, int x, int y)
 	switch (key)
 	{
 		case 13: //enter key
+			point[0].setVisited();
 			point[start_index].setVisited();
 			point[PT_MAX-1].setVisited();
 			RDP(point, start_index, PT_MAX-1);
@@ -144,12 +163,14 @@ int main(int argc, char * argv[]) {
 	window=glutCreateWindow("RDP algorithm");//returns windows creation success or failure
 	
 	initialize();
+	//worst_case();
 
 	InitGL();
 	
 	glutDisplayFunc(display);
 	
-	start_index = rand()%(1+((PT_MAX/20)+1));
+	//start_index = rand()%(1+((PT_MAX/20)+1));
+	//start_index = rand()%(PT_MAX-1);
 	epsilon = fmod(rand(),((PT_MAX/20)+1))+((PT_MAX/20)*2);
 	cout<<epsilon<<"\n"<<start_index<<"\n";
 	
