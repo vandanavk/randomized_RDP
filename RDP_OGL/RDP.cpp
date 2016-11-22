@@ -12,6 +12,7 @@
 #include <cmath>
 #include <chrono>
 #include <vector>
+#include <random>
 #include "rdp_ogl.h"
 using namespace std;
 
@@ -40,24 +41,28 @@ void initialize()
 	int i = 0;
 	
 	srand(time(NULL));
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<> disX(0, 149);
+	std::uniform_int_distribution<> disY(0, PT_MAX-1);
 	for (i =0; i<PT_MAX; i++)
 	{
-		point.push_back(Point(20+(rand()%(129)), 50+(rand()%(PT_MAX-1)), false));
+		point.push_back(Point(20+(disX(gen)), 50+(disY(gen)), false));
 	}
 	sort(point.begin(), point.end(), [](const Point& lhs, const Point& rhs){ return lhs.x < rhs.x; });
-	for (i=0;i<PT_MAX;i++)
-		cout<<"("<<point[i].x<<","<<point[i].y<<") ";
 	backup=point;
 }
 
 void worst_case()
 {
 	int i = 0;
-	
-	srand(time(NULL));
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<> disX(0, 149);
+	std::uniform_int_distribution<> disY(0, 1);
 	for (i =0; i<PT_MAX; i++)
 	{
-		point.push_back(Point(20+(rand()%(129)), 50+(rand()%(80)), false));
+		point.push_back(Point(20+(disX(gen)), 50+((disY(gen))?30:-30), false));
 	}
 	sort(point.begin(), point.end(), [](const Point& lhs, const Point& rhs){ return lhs.x < rhs.x; });
 }
@@ -96,8 +101,11 @@ void display()
 
 void RDP(vector<Point>& p, int first, int last) {
 	
-	double dist =0, cmp = 0, dmax = 0;
+	double dist =0, dmax = 0;
 	int index = 0;
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<> disJ(1, last-first);
 	
 	glutDisplayFunc(display);
 	glColor3ub(0, 255, 0);
@@ -109,27 +117,20 @@ void RDP(vector<Point>& p, int first, int last) {
 	glFlush();
 	glutSwapBuffers();
 	glutPostRedisplay();
-	//cout <<"first="<<p[first].x<<","<<p[first].y<<"\n";
-	//cout <<"last="<<p[last].x<<","<<p[last].y<<"\n";
-	for (int j = first+1; j<last;j++)
-	{
-		if (p[j].getVisited())
-			continue;
-		dist = (p[first]-p[last]).x2y2();
-		cmp = (fabs(((p[last].getX()-p[first].getX())*(p[first].getY()-p[j].getY())) - ((p[first].getX()-p[j].getX())*(p[last].getY()-p[first].getY()))))/dist;
-		if (cmp > dmax) {
-			index = j;
-			dmax = cmp;
-		}
-	}
 
+	int j = disJ(gen)+first;
+	
+	if (!p[j].getVisited()) {
+		dist = (p[first]-p[last]).x2y2();
+		dmax = (fabs(((p[last].getX()-p[first].getX())*(p[first].getY()-p[j].getY())) - ((p[first].getX()-p[j].getX())*(p[last].getY()-p[first].getY()))))/dist;
+		index = j;
+	}
+	
 	if (dmax > epsilon) {
-		cout <<"greater: "<<p[index].x<<","<<p[index].y<<"\n";
 		RDP(p,first, index);
 		RDP(p,index, last);
 	}
 	if (!p[index].getVisited() && dmax < epsilon){
-		cout <<"lesser: "<<p[index].x<<","<<p[index].y<<"\n";
 		p.erase(p.begin()+index);
 	}
 }
@@ -139,12 +140,14 @@ void keyboard (unsigned char key, int x, int y)
 	switch (key)
 	{
 		case 13: //enter key
-			point[0].setVisited();
-			point[start_index].setVisited();
-			point[PT_MAX-1].setVisited();
-			RDP(point, start_index, PT_MAX-1);
+			for (int i=0;i<5;i++) {
+				point[0].setVisited();
+				point[start_index].setVisited();
+				point[PT_MAX-1].setVisited();
+				RDP(point, start_index, PT_MAX-1);
 
-			glutPostRedisplay ();
+				glutPostRedisplay ();
+			}
 			break;
 		default:
 			break;
@@ -169,10 +172,7 @@ int main(int argc, char * argv[]) {
 	
 	glutDisplayFunc(display);
 	
-	//start_index = rand()%(1+((PT_MAX/20)+1));
-	//start_index = rand()%(PT_MAX-1);
-	epsilon = fmod(rand(),((PT_MAX/20)+1))+((PT_MAX/20)*2);
-	cout<<epsilon<<"\n"<<start_index<<"\n";
+	epsilon = 5;
 	
 	glutKeyboardFunc (keyboard);
 
