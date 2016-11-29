@@ -70,26 +70,33 @@ void worst_case()
 void display()
 {
 	int i;
+	vector<Point> disp;
 	
 	glClear(GL_COLOR_BUFFER_BIT);
 	glColor3ub(0.0, 0.0, 0.0);
 	glPointSize(5.0);
 	
+	for(i=0;i<point.size();i++)
+	{
+		if (!point[i].getDeleted())
+			disp.push_back(point[i]);
+	}
+	
 	//draw two points
 	glBegin(GL_POINTS);
-	for(i = 0; i < PT_MAX; i++)
+	for(i = 0; i < disp.size(); i++)
 	{
-			glVertex2i(point[i].x,point[i].y);
+		glVertex2i(disp[i].x,disp[i].y);
 	}
 	glEnd();
 	
 	glColor3ub(255, 0, 0);
 	glBegin(GL_LINES);
-	for (i=0;i+1<PT_MAX;i++)
+	for (i=0;i+1<disp.size();i++)
 	{
 		{
-			glVertex2i(point[i].x,point[i].y);
-			glVertex2i(point[i+1].x,point[i+1].y);
+			glVertex2i(disp[i].x,disp[i].y);
+			glVertex2i(disp[i+1].x,disp[i+1].y);
 		}
 	}
 	
@@ -101,11 +108,19 @@ void display()
 
 void RDP(vector<Point>& p, int first, int last) {
 	
-	double dist =0, dmax = 0;
+	double dist =0, dmax = 0, cmp = 0;
 	int index = 0;
+	int alpha = 2;
 	std::random_device rd;
 	std::mt19937 gen(rd());
+	vector<int> J;
 	std::uniform_int_distribution<> disJ(1, last-first);
+	
+	for (int i=0;i<alpha;i++)
+		J.push_back(disJ(gen)+first);
+	
+	if (p[first].getDeleted() || p[last].getDeleted())
+		return;
 	
 	glutDisplayFunc(display);
 	glColor3ub(0, 255, 0);
@@ -118,20 +133,27 @@ void RDP(vector<Point>& p, int first, int last) {
 	glutSwapBuffers();
 	glutPostRedisplay();
 
-	int j = disJ(gen)+first;
-	
-	if (!p[j].getVisited()) {
+	for (int j = 0; j<J.size();j++)
+	{
+		int it = J[j];
+		if (p[it].getVisited() || p[it].getDeleted())
+			continue;
 		dist = (p[first]-p[last]).x2y2();
-		dmax = (fabs(((p[last].getX()-p[first].getX())*(p[first].getY()-p[j].getY())) - ((p[first].getX()-p[j].getX())*(p[last].getY()-p[first].getY()))))/dist;
-		index = j;
+		cmp = (fabs(((p[last].getX()-p[first].getX())*(p[first].getY()-p[it].getY())) - ((p[first].getX()-p[it].getX())*(p[last].getY()-p[first].getY()))))/dist;
+		if (cmp > dmax) {
+			index = it;
+			dmax = cmp;
+		}
 	}
+
 	
 	if (dmax > epsilon) {
 		RDP(p,first, index);
 		RDP(p,index, last);
 	}
-	if (!p[index].getVisited() && dmax < epsilon){
-		p.erase(p.begin()+index);
+	if (!p[index].getVisited() && !p[index].getDeleted() && dmax < epsilon){
+		for (int i=first+1;i<last;i++)
+			p[i].setDeleted();
 	}
 }
 
@@ -140,7 +162,7 @@ void keyboard (unsigned char key, int x, int y)
 	switch (key)
 	{
 		case 13: //enter key
-			for (int i=0;i<5;i++) {
+			/*for (int i=0;i<5;i++)*/ {
 				point[0].setVisited();
 				point[start_index].setVisited();
 				point[PT_MAX-1].setVisited();

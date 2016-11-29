@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		41787F851DD80E1500FB94B8 /* RDP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41787F841DD80E1500FB94B8 /* RDP.cpp */; };
-		41787F8D1DD80FA000FB94B8 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41787F8C1DD80FA000FB94B8 /* GLUT.framework */; };
-		41787F8F1DD80FB100FB94B8 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41787F8E1DD80FB100FB94B8 /* OpenGL.framework */; };
+		412FF0091DEBFCE2000B811C /* RDP_original.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 412FF0081DEBFCE2000B811C /* RDP_original.cpp */; };
+		412FF0121DEBFE11000B811C /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 412FF0111DEBFE11000B811C /* OpenGL.framework */; };
+		412FF0141DEBFE16000B811C /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 412FF0131DEBFE16000B811C /* GLUT.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		41787F7F1DD80E1500FB94B8 /* CopyFiles */ = {
+		412FF0031DEBFCE2000B811C /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -25,57 +25,57 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		41787F811DD80E1500FB94B8 /* RDP_OGL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RDP_OGL; sourceTree = BUILT_PRODUCTS_DIR; };
-		41787F841DD80E1500FB94B8 /* RDP.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RDP.cpp; sourceTree = "<group>"; usesTabs = 1; };
-		41787F8C1DD80FA000FB94B8 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
-		41787F8E1DD80FB100FB94B8 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
-		41787F901DD8102200FB94B8 /* rdp_ogl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rdp_ogl.h; sourceTree = "<group>"; };
+		412FF0051DEBFCE2000B811C /* RDP_original_OGL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RDP_original_OGL; sourceTree = BUILT_PRODUCTS_DIR; };
+		412FF0081DEBFCE2000B811C /* RDP_original.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RDP_original.cpp; sourceTree = "<group>"; };
+		412FF00F1DEBFD4C000B811C /* rdp_ogl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rdp_ogl.h; path = ../../RDP_OGL/rdp_ogl.h; sourceTree = "<group>"; };
+		412FF0111DEBFE11000B811C /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		412FF0131DEBFE16000B811C /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		41787F7E1DD80E1500FB94B8 /* Frameworks */ = {
+		412FF0021DEBFCE2000B811C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41787F8F1DD80FB100FB94B8 /* OpenGL.framework in Frameworks */,
-				41787F8D1DD80FA000FB94B8 /* GLUT.framework in Frameworks */,
+				412FF0141DEBFE16000B811C /* GLUT.framework in Frameworks */,
+				412FF0121DEBFE11000B811C /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		41787F781DD80E1500FB94B8 = {
+		412FEFFC1DEBFCE2000B811C = {
 			isa = PBXGroup;
 			children = (
-				41787F831DD80E1500FB94B8 /* RDP_OGL */,
-				41787F821DD80E1500FB94B8 /* Products */,
-				41787F8B1DD80FA000FB94B8 /* Frameworks */,
+				412FF0071DEBFCE2000B811C /* RDP_original_OGL */,
+				412FF0061DEBFCE2000B811C /* Products */,
+				412FF0101DEBFE11000B811C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		41787F821DD80E1500FB94B8 /* Products */ = {
+		412FF0061DEBFCE2000B811C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				41787F811DD80E1500FB94B8 /* RDP_OGL */,
+				412FF0051DEBFCE2000B811C /* RDP_original_OGL */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		41787F831DD80E1500FB94B8 /* RDP_OGL */ = {
+		412FF0071DEBFCE2000B811C /* RDP_original_OGL */ = {
 			isa = PBXGroup;
 			children = (
-				41787F841DD80E1500FB94B8 /* RDP.cpp */,
-				41787F901DD8102200FB94B8 /* rdp_ogl.h */,
+				412FF00F1DEBFD4C000B811C /* rdp_ogl.h */,
+				412FF0081DEBFCE2000B811C /* RDP_original.cpp */,
 			);
-			path = RDP_OGL;
+			path = RDP_original_OGL;
 			sourceTree = "<group>";
 		};
-		41787F8B1DD80FA000FB94B8 /* Frameworks */ = {
+		412FF0101DEBFE11000B811C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				41787F8E1DD80FB100FB94B8 /* OpenGL.framework */,
-				41787F8C1DD80FA000FB94B8 /* GLUT.framework */,
+				412FF0131DEBFE16000B811C /* GLUT.framework */,
+				412FF0111DEBFE11000B811C /* OpenGL.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -83,69 +83,69 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		41787F801DD80E1500FB94B8 /* RDP_OGL */ = {
+		412FF0041DEBFCE2000B811C /* RDP_original_OGL */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 41787F881DD80E1500FB94B8 /* Build configuration list for PBXNativeTarget "RDP_OGL" */;
+			buildConfigurationList = 412FF00C1DEBFCE2000B811C /* Build configuration list for PBXNativeTarget "RDP_original_OGL" */;
 			buildPhases = (
-				41787F7D1DD80E1500FB94B8 /* Sources */,
-				41787F7E1DD80E1500FB94B8 /* Frameworks */,
-				41787F7F1DD80E1500FB94B8 /* CopyFiles */,
+				412FF0011DEBFCE2000B811C /* Sources */,
+				412FF0021DEBFCE2000B811C /* Frameworks */,
+				412FF0031DEBFCE2000B811C /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = RDP_OGL;
-			productName = RDP_OGL;
-			productReference = 41787F811DD80E1500FB94B8 /* RDP_OGL */;
+			name = RDP_original_OGL;
+			productName = RDP_original_OGL;
+			productReference = 412FF0051DEBFCE2000B811C /* RDP_original_OGL */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		41787F791DD80E1500FB94B8 /* Project object */ = {
+		412FEFFD1DEBFCE2000B811C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Vandana Kannan";
 				TargetAttributes = {
-					41787F801DD80E1500FB94B8 = {
+					412FF0041DEBFCE2000B811C = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 6YW53ZPUGY;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = 41787F7C1DD80E1500FB94B8 /* Build configuration list for PBXProject "RDP_OGL" */;
+			buildConfigurationList = 412FF0001DEBFCE2000B811C /* Build configuration list for PBXProject "RDP_original_OGL" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 41787F781DD80E1500FB94B8;
-			productRefGroup = 41787F821DD80E1500FB94B8 /* Products */;
+			mainGroup = 412FEFFC1DEBFCE2000B811C;
+			productRefGroup = 412FF0061DEBFCE2000B811C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				41787F801DD80E1500FB94B8 /* RDP_OGL */,
+				412FF0041DEBFCE2000B811C /* RDP_original_OGL */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		41787F7D1DD80E1500FB94B8 /* Sources */ = {
+		412FF0011DEBFCE2000B811C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41787F851DD80E1500FB94B8 /* RDP.cpp in Sources */,
+				412FF0091DEBFCE2000B811C /* RDP_original.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		41787F861DD80E1500FB94B8 /* Debug */ = {
+		412FF00A1DEBFCE2000B811C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -192,7 +192,7 @@
 			};
 			name = Debug;
 		};
-		41787F871DD80E1500FB94B8 /* Release */ = {
+		412FF00B1DEBFCE2000B811C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -232,7 +232,7 @@
 			};
 			name = Release;
 		};
-		41787F891DD80E1500FB94B8 /* Debug */ = {
+		412FF00D1DEBFCE2000B811C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEVELOPMENT_TEAM = 6YW53ZPUGY;
@@ -240,7 +240,7 @@
 			};
 			name = Debug;
 		};
-		41787F8A1DD80E1500FB94B8 /* Release */ = {
+		412FF00E1DEBFCE2000B811C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEVELOPMENT_TEAM = 6YW53ZPUGY;
@@ -251,25 +251,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		41787F7C1DD80E1500FB94B8 /* Build configuration list for PBXProject "RDP_OGL" */ = {
+		412FF0001DEBFCE2000B811C /* Build configuration list for PBXProject "RDP_original_OGL" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				41787F861DD80E1500FB94B8 /* Debug */,
-				41787F871DD80E1500FB94B8 /* Release */,
+				412FF00A1DEBFCE2000B811C /* Debug */,
+				412FF00B1DEBFCE2000B811C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		41787F881DD80E1500FB94B8 /* Build configuration list for PBXNativeTarget "RDP_OGL" */ = {
+		412FF00C1DEBFCE2000B811C /* Build configuration list for PBXNativeTarget "RDP_original_OGL" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				41787F891DD80E1500FB94B8 /* Debug */,
-				41787F8A1DD80E1500FB94B8 /* Release */,
+				412FF00D1DEBFCE2000B811C /* Debug */,
+				412FF00E1DEBFCE2000B811C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 41787F791DD80E1500FB94B8 /* Project object */;
+	rootObject = 412FEFFD1DEBFCE2000B811C /* Project object */;
 }

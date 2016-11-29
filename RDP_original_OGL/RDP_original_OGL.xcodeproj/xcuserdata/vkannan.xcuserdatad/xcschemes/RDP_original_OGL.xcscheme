@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "41787F801DD80E1500FB94B8"
-               BuildableName = "RDP_OGL"
-               BlueprintName = "RDP_OGL"
-               ReferencedContainer = "container:RDP_OGL.xcodeproj">
+               BlueprintIdentifier = "412FF0041DEBFCE2000B811C"
+               BuildableName = "RDP_original_OGL"
+               BlueprintName = "RDP_original_OGL"
+               ReferencedContainer = "container:RDP_original_OGL.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "41787F801DD80E1500FB94B8"
-            BuildableName = "RDP_OGL"
-            BlueprintName = "RDP_OGL"
-            ReferencedContainer = "container:RDP_OGL.xcodeproj">
+            BlueprintIdentifier = "412FF0041DEBFCE2000B811C"
+            BuildableName = "RDP_original_OGL"
+            BlueprintName = "RDP_original_OGL"
+            ReferencedContainer = "container:RDP_original_OGL.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -55,18 +55,13 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "41787F801DD80E1500FB94B8"
-            BuildableName = "RDP_OGL"
-            BlueprintName = "RDP_OGL"
-            ReferencedContainer = "container:RDP_OGL.xcodeproj">
+            BlueprintIdentifier = "412FF0041DEBFCE2000B811C"
+            BuildableName = "RDP_original_OGL"
+            BlueprintName = "RDP_original_OGL"
+            ReferencedContainer = "container:RDP_original_OGL.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
-         <AdditionalOption
-            key = "NSZombieEnabled"
-            value = "YES"
-            isEnabled = "YES">
-         </AdditionalOption>
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
@@ -79,10 +74,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "41787F801DD80E1500FB94B8"
-            BuildableName = "RDP_OGL"
-            BlueprintName = "RDP_OGL"
-            ReferencedContainer = "container:RDP_OGL.xcodeproj">
+            BlueprintIdentifier = "412FF0041DEBFCE2000B811C"
+            BuildableName = "RDP_original_OGL"
+            BlueprintName = "RDP_original_OGL"
+            ReferencedContainer = "container:RDP_original_OGL.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -7,13 +7,13 @@ using namespace std;
 class Point{
 public:
     double x, y;
-    bool visited;
+    bool visited, deleted;
     Point() {
     }
     ~Point() {
     }
     Point(double v1, double v2, bool v) {
-	x = v1; y=v2;visited=v;
+	x = v1; y=v2;visited=v;deleted=false;
     }
     double getX() {
 	return x;
@@ -29,6 +29,14 @@ public:
 
     void setVisited() {
 	visited = true;
+    }
+
+    bool getDeleted() {
+	return deleted;
+    }
+
+    void setDeleted() {
+	deleted = true;
     }
 
     double operator*(Point rhs)const{
