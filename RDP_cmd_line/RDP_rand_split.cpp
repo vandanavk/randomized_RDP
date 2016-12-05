@@ -8,7 +8,7 @@
 #include <random>
 using namespace std;
 
-#define PT_MAX 30
+#define PT_MAX 50
 
 vector<Point> point;
 vector<Point> backup;
@@ -18,10 +18,12 @@ double epsilon;
 void RDP(vector<Point>& p, int first, int last) {
 
 	double dist =0, cmp = 0, dmax = 0;
-	int alpha = 2, index = 0;
+	double alpha;
+	int index = 0;
 	vector<int> J;
 	srand(time(NULL));
 
+	alpha = ceil(sqrt(last-first+1));
 	for (int i=0;i<alpha;i++)
 		J.push_back(rand()%(last-first)+first);
 	
@@ -73,9 +75,11 @@ void normal_RDP(vector<Point>& p, int first, int last) {
 		for (int i=first+1;i<last;i++)
 			p[i].setDeleted();
 }
+
 int main()
 {
 	int start_index=0;
+	double sum = 0;
 	epsilon = 5;
 
 	srand(time(NULL));
@@ -94,6 +98,14 @@ int main()
 		cout<<"("<<point[i].getX()<<","<<point[i].getY()<<"), ";
 	}
 
+	sum = 0;
+	for (int i=0;i+1<PT_MAX; i++)
+	{
+		sum += (abs(point[i].getX()-point[i+1].getX())/2)*(point[i].getY()+point[i+1].getY());
+	}
+
+	cout<<"\n\nArea under the curve = "<<sum<<"\n\n";
+
 
 	cout<<"\n\nOriginal algorithm\n";
 	cout<<"\n\nUsing epsilon "<<epsilon<<"\n";
@@ -106,6 +118,7 @@ int main()
 	long long microseconds = std::chrono::duration_cast<std::chrono::microseconds>(elapsed).count();
 	cout<<"\n\nTime taken = "<<microseconds<<"\n";
 	cout<<"\n\n# of distance calculations with original algorithm = "<<c;
+	
 	c=0;
 	cout<<"\n\nRandomized algorithm\n";
 
@@ -122,22 +135,40 @@ int main()
 	microseconds = std::chrono::duration_cast<std::chrono::microseconds>(elapsed).count();
 	cout<<"\n\nTime taken = "<<microseconds<<"\n\n";
 
-	int size_ct = 0;
+	int size_ct = 0; vector<Point> Area;
 	for (int i=0;i<point.size();i++)
 		if (!point[i].getDeleted()) {
 			cout<<"("<<point[i].getX()<<","<<point[i].getY()<<"), ";
+			Area.push_back(point[i]);
 			size_ct++;
 		}
 	cout<<"\n\nAfter normal RDP algorithm: "<<size_ct<<" points\n\n";
 
-	size_ct = 0;	
+	sum = 0;
+	for (int i=0;i+1<size_ct; i++)
+	{
+		sum += (abs(Area[i].getX()-Area[i+1].getX())/2)*(Area[i].getY()+Area[i+1].getY());
+	}
+
+	cout<<"\n\nArea using original algo = "<<sum<<"\n\n";
+
+	size_ct = 0; vector<Point> AreaR;
 	for (int i=0;i<backup.size();i++)
 		if (!backup[i].getDeleted()) {
 			cout<<"("<<backup[i].getX()<<","<<backup[i].getY()<<"), ";
+			AreaR.push_back(backup[i]);
 			size_ct++;
 		}
 
 	cout<<"\n\nAfter randomized RDP algorithm: "<<size_ct<<" points\n";
 	cout<<"\n# of distance calculations with randomized algorithm = "<<c<<"\n";
+
+	sum = 0;
+        for (int i=0;i+1<size_ct; i++)
+        {
+		sum += (abs(AreaR[i].getX()-AreaR[i+1].getX())/2)*(AreaR[i].getY()+AreaR[i+1].getY());
+        }
+
+        cout<<"\n\nArea using randomized algo = "<<sum<<"\n\n";
 	return 0;
 }

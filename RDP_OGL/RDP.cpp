@@ -22,7 +22,7 @@ using namespace std;
 #define glDeleteVertexArrays glDeleteVertexArraysAPPLE
 #endif
 
-#define PT_MAX 30
+#define PT_MAX 50
 
 vector<Point> point;
 vector<Point> backup;

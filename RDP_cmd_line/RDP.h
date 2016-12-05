@@ -23,6 +23,14 @@ public:
 	return y;
     }
 
+    void setX(double n) {
+	x = n;
+    }
+
+    void setY(double n) {
+	y = n;
+    }
+
     bool getVisited() {
 	return visited;
     }
